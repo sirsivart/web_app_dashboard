@@ -5,13 +5,76 @@
     <meta charset="utf-8">
     <title>Web App Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Palanquin:100,400,700" rel="stylesheet">
     <link rel="stylesheet" href="scss\normalize.css">
     <link rel="stylesheet" href="scss\main.css">
 </head>
 
 <body>
+    <header class="header">
+        <h2 class="yourText">Your</h2>
+        <h2 class="appText">App&#8482</h2>
 
+        <span class="userName">Travis Carney</span>
+        <div class="profilePictureDiv">
+            <img class="profilePicture" src="icons\IMG_2213 (1).JPG" alt="userPicture">
+        </div>
+        <p class="spacer">|</p>
+        <img class="bell" src="icons\icon-bell.svg" alt="Notification Bell Icon">
+
+
+    </header>
+    <div class="mainNav">
+        <ul>
+            <li>
+                <a href="#"><img src="icons\icon-dashboard.svg" alt="dashboard"></a>
+            </li>
+            <li>
+                <a href="#"><img src="icons\icon-members.svg" alt="members"></a>
+            </li>
+            <li>
+                <a href="#"><img src="icons\icon-visits.svg" alt="visits"></a>
+            </li>
+            <li>
+                <a href="#"><img src="icons\icon-settings.svg" alt="settings"></a>
+            </li>
+        </ul>
+    </div>
+    <div class="dashboard">
+        <h2 class="dashboardTitle">Dashboard</h2>
+        <div class="search">
+            <input type="search" name="search" value="search">
+        </div>
+        <div class="chartBox">
+            <canvas id="myChart" width="400" height="400">
+          </canvas>
+        </div>
+
+        <div class="chartBox">
+            <canvas id="myChart2" width="400" height="400">
+        </canvas>
+        </div>
+
+        <div class="chartBox">
+            <canvas id="myChart3" width="400" height="400">
+        </canvas>
+        </div>
+
+        <div class="socailStats">
+
+        </div>
+        <div class="newMembers">
+
+        </div>
+        <div class="messageUser">
+            <input type="search" name="searchForUser" value="Search for User">
+            <textarea name="textarea" rows="10" cols="50">Message For User</textarea>
+        </div>
+    </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js">
+</script>
 <script src="javascript\main.js" type="text/javascript">
 </script>
 
