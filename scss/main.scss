@@ -1,11 +1,19 @@
+@import url("http://clipart-library.com/images/8cGb5q86i.jpg");
+
 body {
   width: 100%;
+  min-width: 320px;
   margin: 0;
   padding: 0;
   display: inline-block;
 }
 
 .header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -14,7 +22,6 @@ body {
 }
 
 .header h2 {
-  float: left;
   margin: 0;
   color: white;
   line-height: 75px;
@@ -30,60 +37,131 @@ body {
   font-weight: 100;
 }
 
-.bell {
-  width: 25px;
-  float: right;
-  padding-top: 25px;
+.appName {
+  display: flex;
+  flex: auto;
+  flex-shrink: .5;
 }
 
-.spacer {
-  font-family: 'Palanquin', sans-serif;
-  font-weight: 100;
-  color: rgb(93, 97, 191);
-  line-height: 75px;
-  font-size: 50px;
-  float: right;
-  margin: 0;
+.bell {
+  flex: 0;
+  width: 25px;
+  padding-right: 10px;
 }
 
 .userName {
-  float: right;
+  display: flex;
+  flex: 0 0 content;
+  align-self: flex-end;
   color: white;
   line-height: 75px;
+  padding-left: 10px;
+  padding-right: 15px;
+  font-family: 'Palanquin', sans-serif;
+}
+
+.profilePictureDiv {
+  flex: 0 0 30px;
+  align-self: flex-end;
+  padding-left: 10px;
+  height: 30px;
+  margin-bottom: 22.5px;
+  border-left: 1px solid rgb(77, 76, 114);
 }
 
 .profilePicture {
-  margin: 10, 0, 10;
   width: 30px;
   border-radius: 50%;
 }
 
-.profilePictureDiv {
-  padding-top: 25px;
-  float: right;
-}
-
 .mainNav {
   background-color: rgb(77, 76, 114);
-  height: 40px;
+  height: 60px;
 }
 
-.mainNav ul {
-  padding: 0;
-  margin: 0;
-  display: inline;
+.mainNavUl {
+  display: flex;
   list-style: none;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  margin: 0;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-.mainNav ul li a {
-  padding-left: 15%;
-  float: left;
-}
-
-.mainNav li img {
+.navList {
+  display: flex;
+  flex: 0 0 30px;
+  padding-top: 15px;
   width: 30px;
+}
+
+.navList img {
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.selected {
+  //box-shadow: inset 0px 5px 5px -2px rgba(116, 119, 191, 0.75);
+  img {
+    border-top: 15px ridge rgb(116, 119, 191);
+    border-right: 10px solid rgb(77, 76, 114);
+    border-left: 10px solid rgb(77, 76, 114);
+    position: relative;
+    top: -15px;
+  }
+}
+
+.navButton {
+  height: 100;
+}
+
+.dashboardHeader {
+  float: left;
+  width: 40%;
+}
+
+.dashboardTitle {
+  color: gray;
+  font-weight: 400;
+  margin: 0;
+  line-height: 41px;
+  padding-left: 20px;
+}
+
+.search {
+  float: right;
+  width: 50%;
+}
+
+input[type=search] {
+  margin-right: 20px;
+  float: right;
+  width: 70%;
+  border-radius: 5px;
+  color: silver;
+  font-family: 'Palanquin', sans-serif;
+  border: 1px solid silver;
+  padding: 7px 0;
+  text-indent: 20px;
+}
+
+.magnify {
+  width: 20px;
+  position: absolute;
+  top: 161px;
+  left: 85%;
 }
 
 .chartBox {
   width: 380px;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
 }

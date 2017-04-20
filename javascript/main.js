@@ -92,3 +92,20 @@ var myChart3 = new Chart(ctxz, {
         }]
     },
 });
+
+$('.navButton').on('click', function() {
+    $('.navButton').removeClass('selected');
+    $(this).addClass('selected');
+});
+
+// $.ajax({
+//     url: 'https://randomuser.me/api/?results=4',
+//     dataType: 'json',
+//     success: function(data) {
+//         console.log(data.results[0].picture.medium);
+//
+//         $('<img />', {
+//             src: data.results[3].picture.medium
+//         }).appendTo('.newMembers')
+//     }
+// });

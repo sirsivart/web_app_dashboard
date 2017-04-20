@@ -12,40 +12,44 @@
 
 <body>
     <header class="header">
-        <h2 class="yourText">Your</h2>
-        <h2 class="appText">App&#8482</h2>
-
-        <span class="userName">Travis Carney</span>
+        <div class="appName">
+            <h2 class="yourText">Your</h2>
+            <h2 class="appText">App&#8482</h2>
+        </div>
+        <img class="bell" src="icons\icon-bell.svg" alt="Notification Bell Icon">
         <div class="profilePictureDiv">
             <img class="profilePicture" src="icons\IMG_2213 (1).JPG" alt="userPicture">
         </div>
-        <p class="spacer">|</p>
-        <img class="bell" src="icons\icon-bell.svg" alt="Notification Bell Icon">
+        <span class="userName">Travis Carney</span>
 
 
     </header>
-    <div class="mainNav">
-        <ul>
-            <li>
-                <a href="#"><img src="icons\icon-dashboard.svg" alt="dashboard"></a>
+    <div class="mainNav" id="mainNav">
+        <ul class="mainNavUl">
+            <li class="navList">
+                <a class="navButton" href="#dashboard"><img src="icons\icon-dashboard.svg" alt="dashboard"></a>
             </li>
-            <li>
-                <a href="#"><img src="icons\icon-members.svg" alt="members"></a>
+            <li class="navList">
+                <a class="navButton" href="#members"><img src="icons\icon-members.svg" alt="members"></a>
             </li>
-            <li>
-                <a href="#"><img src="icons\icon-visits.svg" alt="visits"></a>
+            <li class="navList">
+                <a class="navButton" href="#visits"><img src="icons\icon-visits.svg" alt="visits"></a>
             </li>
-            <li>
-                <a href="#"><img src="icons\icon-settings.svg" alt="settings"></a>
+            <li class="navList">
+                <a class="navButton" href="#settings"><img src="icons\icon-settings.svg" alt="settings"></a>
             </li>
         </ul>
     </div>
-    <div class="dashboard">
-        <h2 class="dashboardTitle">Dashboard</h2>
-        <div class="search">
-            <input type="search" name="search" value="search">
+
+    <div class="dashboard group" id="dashboard">
+        <div class="dashboardHeader group">
+            <h2 class="dashboardTitle">Dashboard</h2>
         </div>
-        <div class="chartBox">
+        <div class="search group">
+            <img class="magnify" src="icons\mag.jpg" alt="search">
+            <input type="search" name="search" placeholder="Search">
+        </div>
+        <div class="chartBox group" id="visits">
             <canvas id="myChart" width="400" height="400">
           </canvas>
         </div>
@@ -63,16 +67,22 @@
         <div class="socailStats">
 
         </div>
-        <div class="newMembers">
-
+        <div class="newMembers" id="members">
+            <h2>NEW MEMBERS</h2>
+        </div>
+        <div class="recentActivity">
+            <h2>RECENT ACTIVITY</h2>
         </div>
         <div class="messageUser">
             <input type="search" name="searchForUser" value="Search for User">
             <textarea name="textarea" rows="10" cols="50">Message For User</textarea>
         </div>
+        <div class="settings" id="settings">
+
+        </div>
     </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js">
 </script>
 <script src="javascript\main.js" type="text/javascript">
