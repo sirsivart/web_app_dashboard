@@ -1,5 +1,3 @@
-@import url("http://clipart-library.com/images/8cGb5q86i.jpg");
-
 body {
   width: 100%;
   min-width: 320px;
@@ -56,7 +54,7 @@ body {
   color: white;
   line-height: 75px;
   padding-left: 10px;
-  padding-right: 15px;
+  padding-right: 20px;
   font-family: 'Palanquin', sans-serif;
 }
 
@@ -77,6 +75,7 @@ body {
 .mainNav {
   background-color: rgb(77, 76, 114);
   height: 60px;
+  width: 100%;
 }
 
 .mainNavUl {
@@ -112,6 +111,11 @@ body {
     border-left: 10px solid rgb(77, 76, 114);
     position: relative;
     top: -15px;
+    left: -10px;
+  }
+
+  .navList {
+    margin-right: 50px;
   }
 }
 
@@ -119,9 +123,20 @@ body {
   height: 100;
 }
 
+.dashboard {
+  width: 100%;
+}
+
+.dashboardHeaderContainer {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
 .dashboardHeader {
-  float: left;
-  width: 40%;
+  margin-top: 10px;
+  display: flex;
+  flex: 0 1 content;
 }
 
 .dashboardTitle {
@@ -133,35 +148,193 @@ body {
 }
 
 .search {
-  float: right;
-  width: 50%;
+  flex-grow: 0;
+  flex-basis: content;
+  align-self: center;
+  width: 30%;
+  margin-right: 20px;
+  position: relative;
 }
 
 input[type=search] {
-  margin-right: 20px;
-  float: right;
-  width: 70%;
+  align-self: flex-end;
   border-radius: 5px;
   color: silver;
   font-family: 'Palanquin', sans-serif;
   border: 1px solid silver;
   padding: 7px 0;
   text-indent: 20px;
+  width: 100%;
 }
 
 .magnify {
-  width: 20px;
   position: absolute;
-  top: 161px;
-  left: 85%;
+  width: 20px;
+  top: 10px;
+  right: 5px;
+}
+
+.chartContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
 
 .chartBox {
-  width: 380px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  max-width: 90%;
+  margin: 15px auto;
 }
 
-.group:after {
+.socialStats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 100%;
+}
+
+.google, .twitter, .facebook {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  align-self: center;
+  max-width: 80%;
+  margin: 15px auto;
+  border: silver solid 1px;
+  border-radius: 5px;
+  padding: 10px 0 10px;
+  height: 75px;
+}
+
+.socialIcon {
+  width: 30px;
+  float: left;
+}
+
+.g1 {
+  margin-left: 20px;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  float: left;
+  background: black;
+}
+
+.twitColor {
+  fill: white;
+  padding-top: 25px;
+  padding-left: 25px;
+}
+
+.faceColor {
+  fill: white;
+  padding-top: 9.15px;
+  padding-left: 22.5px;
+}
+
+.googColor {
+  fill: white;
+  padding-top: 22.5px;
+  padding-left: 22.5px;
+}
+
+.socialText {
+  margin: 0;
+  padding-left: 20px;
+  float: left;
+  font-family: 'Palanquin', sans-serif;
+}
+
+.socialText span {
+  font-weight: 100;
+  font-size: 1.8em;
+}
+
+.userName {
+  color: green;
+}
+
+// SLIDER SWITCH STYLES ***************************************
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 34px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  line-height: 34px;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  color: #ccc;
+
+  .on {
+    padding-left: 10px;
+    margin: 0;
+  }
+
+  .off {
+    padding-left: 6px;
+    margin: 0;
+    color: white;
+  }
+}
+
+.slider:before {
+  position: absolute;
   content: "";
-  display: table;
-  clear: both;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+
+  .on {
+    color: White;
+  }
+
+  .off {
+    color: #2196F3;
+  }
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(46px);
+  -ms-transform: translateX(46px);
+  transform: translateX(46px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }

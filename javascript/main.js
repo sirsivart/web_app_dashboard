@@ -98,14 +98,68 @@ $('.navButton').on('click', function() {
     $(this).addClass('selected');
 });
 
-// $.ajax({
-//     url: 'https://randomuser.me/api/?results=4',
-//     dataType: 'json',
-//     success: function(data) {
-//         console.log(data.results[0].picture.medium);
-//
-//         $('<img />', {
-//             src: data.results[3].picture.medium
-//         }).appendTo('.newMembers')
-//     }
-// });
+// random user generation
+
+$.ajax({
+    url: 'https://randomuser.me/api/?results=4',
+    dataType: 'json',
+    success: function(data) {
+        for (var i = 0; i < data.info.results; i++) {
+            let userName = "<span class='userName'>" + data.results[i].name.first + " " + data.results[i].name.last + "</span>";
+            let userPicture = "<img src='" + data.results[i].picture.medium + "' alt='user profile picture'>";
+            let userEmail = "<a href='mailto:" + data.results[i].email + "'>" + data.results[i].email + "</a>";
+
+            $(".memberName").append('<div class="user">' + userPicture + '<h3>' + userName + '</h3>' + userEmail + '</div>');
+        }
+
+        for (var i = 0; i < data.info.results; i++) {
+            var activity = [" commented on YourApp's SEO Tips", " wishes there was a live action gargoyles movie", " commented on Facebook's Changes for 2016", " posted YourApp's SEO Tips", " gave up Facebook for YourApp", " created a robot that passes butter", " discovered lasagna", " is working on the next big thing", " thinks oranges are better than bananas", " uses only synthetic blend oil"]
+
+            function getRandomInt(min, max) {
+                min = Math.ceil(min);
+                max = Math.floor(max);
+                return Math.floor(Math.random() * (max - min)) + min;
+            }
+            let userActivity = "<span class='userActivity'>" + data.results[i].name.first + " " + data.results[i].name.last + activity[getRandomInt(0, 10)] + "</span>";
+            let userPicture = "<img src='" + data.results[i].picture.medium + "' alt='user profile picture'>";
+            let lastPosted = "<p>" + getRandomInt(0, 350) + " hours ago</p>";
+
+            $(".memberActivity").append('<div class="user">' + userPicture + '<p>' + userActivity + '</p>' + lastPosted + '</div>');
+        }
+
+        new autoComplete({
+            selector: 'input[name="userSearch"]',
+            minChars: 2,
+            source: function(term, suggest) {
+                term = term.toLowerCase();
+                var choices = [data.results[0].name.first + " " + data.results[0].name.last, data.results[1].name.first + " " + data.results[1].name.last, data.results[2].name.first + " " + data.results[2].name.last, data.results[3].name.first + " " + data.results[3].name.last];
+                var matches = [];
+                for (i = 0; i < choices.length; i++)
+                    if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
+                suggest(matches);
+            }
+        });
+
+    }
+});
+
+// Local Storage
+
+function save() {
+    var checkbox1 = document.getElementById("emailNotification");
+    localStorage.setItem("emailNotification", checkbox1.checked);
+    var checkbox2 = document.getElementById("profileToPublic");
+    localStorage.setItem("profileToPublic", checkbox2.checked);
+}
+
+//for loading
+var checked1 = JSON.parse(localStorage.getItem("emailNotification"));
+document.getElementById("emailNotification").checked = checked1;
+var checked2 = JSON.parse(localStorage.getItem("profileToPublic"));
+document.getElementById("profileToPublic").checked = checked2;
+
+//for clearing checked selections
+function cancel() {
+    localStorage.clear();
+    location.reload();
+}
