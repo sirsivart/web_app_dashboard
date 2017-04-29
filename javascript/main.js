@@ -1,3 +1,20 @@
+// NOTIFY
+
+function notifyBox() {
+    document.getElementById('notify1').innerHTML = '<span class="notifySpan1" onclick="this.parentElement.style.display=' + "'none'" + ';">Mom Called</span>';
+    document.getElementById('notify2').innerHTML = '<span class="notifySpan2" onclick="this.parentElement.style.display=' + "'none'" + ';">Pizza' + "'s " + 'done</span>';
+}
+
+$(document).ready(function() {
+    $(".notify").click(function() {
+        $(".notify").hide();
+    });
+});
+
+
+
+// CHARTS
+
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
     type: 'line',
@@ -105,11 +122,11 @@ $.ajax({
     dataType: 'json',
     success: function(data) {
         for (var i = 0; i < data.info.results; i++) {
-            let userName = "<span class='userName'>" + data.results[i].name.first + " " + data.results[i].name.last + "</span>";
-            let userPicture = "<img src='" + data.results[i].picture.medium + "' alt='user profile picture'>";
+            let userName = "<span class='memberName'>" + data.results[i].name.first + " " + data.results[i].name.last + "</span>";
+            let userPicture = "<img class='memberPicture' src='" + data.results[i].picture.medium + "' alt='new member profile picture'>";
             let userEmail = "<a href='mailto:" + data.results[i].email + "'>" + data.results[i].email + "</a>";
 
-            $(".memberName").append('<div class="user">' + userPicture + '<h3>' + userName + '</h3>' + userEmail + '</div>');
+            $(".memberInfo").append('<div class="user">' + userPicture + '<h3>' + userName + '</h3>' + userEmail + '</div>');
         }
 
         for (var i = 0; i < data.info.results; i++) {
@@ -142,6 +159,25 @@ $.ajax({
 
     }
 });
+
+// FORM VALIDATION
+
+function validateForm() {
+    var x = document.forms["messageForm"]["textarea"].value;
+    var y = document.forms["messageForm"]["userSearch"].value;
+    if (x === '') {
+        alert("Say something why don't ya, literally anything else at all.");
+        return false;
+    } else if (y === '') {
+        alert("Please enter a user that you would like to send this message to.");
+        return false;
+    } else {
+        window.alert("MESSAGE SENT!");
+    }
+}
+
+
+
 
 // Local Storage
 

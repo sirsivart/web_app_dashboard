@@ -47,6 +47,75 @@ body {
   padding-right: 10px;
 }
 
+//NOTRIFY STYLES
+
+.notify {
+  display: block;
+  background-color: black;
+  height: 6px;
+  width: 6px;
+  padding: 0px;
+  margin: 0px;
+  border-radius: 50%;
+  border: none;
+  position: absolute;
+  right: 172px;
+  top: 25px;
+  font-family: 'Palanquin', sans-serif;
+}
+
+.notifySpan1 {
+  height: 30px;
+  width: 80px;
+  background-color: white;
+  position: absolute;
+  right: 172px;
+  top: 50px;
+  border-radius: 5px;
+  animation-duration: 1s;
+  animation-name: slidedown;
+  font-family: 'Palanquin', sans-serif;
+  font-size: 10pt;
+  line-height: 30px;
+  text-align: center;
+}
+
+@keyframes slidedown {
+  from {
+    top: -100px;
+  }
+
+  to {
+    top: 50px;
+  }
+}
+
+.notifySpan2 {
+  height: 30px;
+  width: 80px;
+  background-color: white;
+  position: absolute;
+  right: 172px;
+  top: 85px;
+  border-radius: 5px;
+  animation-duration: 1s;
+  animation-name: slidedown2;
+  font-family: 'Palanquin', sans-serif;
+  font-size: 10pt;
+  line-height: 30px;
+  text-align: center;
+}
+
+@keyframes slidedown2 {
+  from {
+    top: -100px;
+  }
+
+  to {
+    top: 85px;
+  }
+}
+
 .userName {
   display: flex;
   flex: 0 0 content;
@@ -174,6 +243,13 @@ input[type=search] {
   right: 5px;
 }
 
+//Alert STYLES
+.alert {
+  cursor: pointer;
+}
+
+// CHART STYLES
+
 .chartContainer {
   display: flex;
   flex-direction: column;
@@ -188,6 +264,8 @@ input[type=search] {
   max-width: 90%;
   margin: 15px auto;
 }
+
+// SOCIAL STATS STYLES
 
 .socialStats {
   display: flex;
@@ -255,8 +333,14 @@ input[type=search] {
   font-size: 1.8em;
 }
 
-.userName {
+// NEW MEMBERS STYLES
+
+.memberName {
   color: green;
+}
+
+.memberPicture {
+  border-radius: 50%;
 }
 
 // SLIDER SWITCH STYLES ***************************************
