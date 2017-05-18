@@ -10,39 +10,67 @@ $(document).ready(function() {
         $(".notify").hide();
     });
 });
+var $dataSet = [100, 94, 79, 82, 41, 30, 69, 99, 54, 24, 62, 18];
 
 
+function hourlyData() {
+    $("button").removeClass("selectedbtn");
+    $(".hourlybtn").addClass("selectedbtn");
+    $dataSet.splice(0, 12, 100, 94, 79, 82, 41, 30, 69, 99, 54, 24, 62, 18);
+    myChart.reset();
+    myChart.update();
+}
+
+function dailyData() {
+    $("button").removeClass("selectedbtn");
+    $(".dailybtn").addClass("selectedbtn");
+    $dataSet.splice(0, 12, 222, 994, 293, 803, 583, 142, 297, 393, 989, 559, 822, 403);
+    myChart.reset();
+    myChart.update();
+}
+
+function weeklyData() {
+    $("button").removeClass("selectedbtn");
+    $(".weeklybtn").addClass("selectedbtn");
+    $dataSet.splice(0, 12, 8452, 2419, 4134, 6644, 7572, 6667, 8318, 2490, 6470, 1670, 7198, 5221);
+    myChart.reset();
+    myChart.update();
+}
+
+function monthlyData() {
+    $("button").removeClass("selectedbtn");
+    $(".monthlybtn").addClass("selectedbtn");
+    $dataSet.splice(0, 12, 30000, 21500, 66741, 69625, 30791, 46633, 62210, 87731, 93365, 65330, 21164, 24303);
+    myChart.reset();
+    myChart.update(1000, true);
+}
 
 // CHARTS
 
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
+    easing: 'easeInElastic',
     type: 'line',
     data: {
-        labels: ["16-22", "23-29", "30-5", "13-19", "20-26", "27-3", "4-10", "11-17", "18-24", "25-31"],
+        labels: ['18-22', '23-25', '25-27', '28-30', '31-34', '35-37', '38-40', '41-43', '44-46', '47-50', '50-65', '66-100'],
         datasets: [{
-            label: '# of Votes',
+            label: 'Hourly',
+            data: $dataSet,
             lineTension: 0,
-            data: [750, 1250, 1000, 1500, 2000, 1500, 1750, 1250, 1750, 2250, 1750, 2250],
-            backgroundColor: [
-                'rgba(115, 119, 191, 0.2)'
-            ],
-            borderColor: [
-                'rgba(115, 119, 191, 1)'
-            ],
-            borderWidth: 1
-        }]
+        }, ]
     },
     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
+        title: {
+            display: true,
+            text: 'AGE DEMOGRAPHIC TRAFFIC'
+        },
+        legend: {
+            display: false,
+
         }
     }
 });
+
 
 var ctxy = document.getElementById("myChart2");
 var myChart2 = new Chart(ctxy, {
@@ -52,13 +80,13 @@ var myChart2 = new Chart(ctxy, {
         datasets: [{
             data: [75, 100, 175, 125, 225, 200, 100],
             backgroundColor: [
-                'rgb(115, 119, 191)',
-                'rgb(115, 119, 191)',
-                'rgb(115, 119, 191)',
-                'rgb(115, 119, 191)',
-                'rgb(115, 119, 191)',
-                'rgb(115, 119, 191)',
-                'rgb(115, 119, 191)'
+                '#575757',
+                '#575757',
+                '#575757',
+                '#575757',
+                '#575757',
+                '#575757',
+                '#575757'
             ],
         }]
     },
@@ -97,23 +125,30 @@ var myChart3 = new Chart(ctxz, {
         datasets: [{
             data: [20, 20, 60],
             backgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56"
+                "#cacaca",
+                "#575757",
+                "#a1a1a1"
             ],
             hoverBackgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56"
+                "#cacaca",
+                "#575757",
+                "#a1a1a1"
             ]
         }]
     },
+    options: {
+        title: {
+            display: true,
+            text: 'MOBILE USERS'
+        }
+    }
 });
 
 $('.navButton').on('click', function() {
     $('.navButton').removeClass('selected');
     $(this).addClass('selected');
 });
+
 
 // random user generation
 
@@ -124,9 +159,10 @@ $.ajax({
         for (var i = 0; i < data.info.results; i++) {
             let userName = "<span class='memberName'>" + data.results[i].name.first + " " + data.results[i].name.last + "</span>";
             let userPicture = "<img class='memberPicture' src='" + data.results[i].picture.medium + "' alt='new member profile picture'>";
-            let userEmail = "<a href='mailto:" + data.results[i].email + "'>" + data.results[i].email + "</a>";
+            let userEmail = "<br /><div class='emailContainer'><a class='memberEmail' href='mailto:" + data.results[i].email + "'>" + data.results[i].email + "</a></div>";
+            let joinDate = "<span class='joinDate'>5/16/17</span>";
 
-            $(".memberInfo").append('<div class="user">' + userPicture + '<h3>' + userName + '</h3>' + userEmail + '</div>');
+            $(".memberInfo").append('<div class="user">' + userPicture + '<h3>' + userName + '</h3>' + joinDate + userEmail + '</div>');
         }
 
         for (var i = 0; i < data.info.results; i++) {
@@ -137,9 +173,9 @@ $.ajax({
                 max = Math.floor(max);
                 return Math.floor(Math.random() * (max - min)) + min;
             }
-            let userActivity = "<span class='userActivity'>" + data.results[i].name.first + " " + data.results[i].name.last + activity[getRandomInt(0, 10)] + "</span>";
-            let userPicture = "<img src='" + data.results[i].picture.medium + "' alt='user profile picture'>";
-            let lastPosted = "<p>" + getRandomInt(0, 350) + " hours ago</p>";
+            let userActivity = "<span class='memberName'>" + data.results[i].name.first + "&nbsp;" + data.results[i].name.last + "&nbsp;" + "</span>" + "<span class='userActivity'>" + activity[getRandomInt(0, 10)] + "</span>";
+            let userPicture = "<img class='memberPicture' src='" + data.results[i].picture.medium + "' alt='user profile picture'>";
+            let lastPosted = "<p class='lastPosted'>" + getRandomInt(0, 350) + " hours ago</p>";
 
             $(".memberActivity").append('<div class="user">' + userPicture + '<p>' + userActivity + '</p>' + lastPosted + '</div>');
         }

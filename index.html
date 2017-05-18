@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <header class="header">
+    <header id="header" class="header">
         <div class="appName">
             <h2 class="yourText">Your</h2>
             <h2 class="appText">App&#8482</h2>
@@ -25,7 +25,7 @@
 
             </button>
         </div>
-        <span class="userName">Travis Carney</span>
+        <span class="userName">Travis <br /> Carney</span>
 
         <div id="notify1">
 
@@ -37,16 +37,16 @@
     <div class="mainNav" id="mainNav">
         <ul class="mainNavUl">
             <li class="navList">
-                <a class="navButton" id="dashboard" href="#dashboard"><img src="icons\icon-dashboard.svg" alt="dashboard"></a>
+                <a class="navButton dashbtn" id="dashboard" href="#header"><img src="icons\icon-dashboard.svg" alt="dashboard"></a>
             </li>
             <li class="navList">
-                <a class="navButton" href="#members"><img src="icons\icon-members.svg" alt="members"></a>
+                <a class="navButton iconbtn" href="#header"><img src="icons\icon-members.svg" alt="members"></a>
             </li>
             <li class="navList">
-                <a class="navButton" href="#visits"><img src="icons\icon-visits.svg" alt="visits"></a>
+                <a class="navButton visitbtn" href="#header"><img src="icons\icon-visits.svg" alt="visits"></a>
             </li>
             <li class="navList">
-                <a class="navButton" href="#settings"><img src="icons\icon-settings.svg" alt="settings"></a>
+                <a class="navButton settingsbtn" href="#header"><img src="icons\icon-settings.svg" alt="settings"></a>
             </li>
         </ul>
     </div>
@@ -56,35 +56,46 @@
             <div class="dashboardHeader">
                 <h2 class="dashboardTitle">Dashboard</h2>
             </div>
-            <div class="search">
-                <img class="magnify" src="icons\mag.jpg" alt="search">
-                <input type="search" name="search" placeholder="Search">
+            <div class="searchbox">
+                <div class="search">
+                    <img class="magnify" src="icons\mag.jpg" alt="search">
+                    <input type="search" name="search" placeholder="Search">
+                </div>
             </div>
+
         </div>
 
-        <div class="alert">
-            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> This is an alert box.
+        <div class="alert clearfix">
+            <span><span class="alertText">Alert: </span>Try-hard ethical pok pok, trust fund YOLO direct trade forage pickled green juice locavore wayfarers tumeric.</span>
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&#10006;</span>
         </div>
 
         <div class="chartContainer">
+            <div class="lineBtnBox">
+                <button class="hourlybtn selectedbtn" type="button" name="Hourly" value="Hourly" onclick="hourlyData()">Hourly</button>
+                <button class="dailybtn" type="button" name="Daily" value="Daily" onclick="dailyData()">Daily</button>
+                <button class="weeklybtn" type="button" name="Weekly" value="Weekly" onclick="weeklyData()">Weekly</button>
+                <button class="monthlybtn" type="button" name="Monthly" value="Monthly" onclick="monthlyData()">Monthly</button>
+            </div>
             <div class="chartBox" id="visits">
-                <canvas id="myChart" width="400" height="400">
+                <canvas id="myChart">
             </canvas>
             </div>
 
-            <div class="chartBox">
+            <div class="chartBox" id="chart2">
                 <canvas id="myChart2" width="400" height="400">
           </canvas>
             </div>
 
-            <div class="chartBox">
+            <div class="chartBox" id="chart3">
                 <canvas id="myChart3" width="400" height="400">
           </canvas>
             </div>
         </div>
 
 
-        <div class="socailStats">
+        <div class="socialStats">
+            <h3 class="socialHeading">SOCIAL STATS</h3>
             <div class="twitter">
                 <div class="g1">
                     <svg class="socialIcon twitColor" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
@@ -134,53 +145,73 @@
             </div>
         </div>
 
+        <div class="memberContainer">
+            <div class="newMembers" id="members">
+                <h2>NEW MEMBERS</h2>
+                <div class="memberInfo">
 
-        <div class="newMembers" id="members">
-            <h2>NEW MEMBERS</h2>
-            <div class="memberInfo">
+                    <!-- javascript inserting html -->
 
+                </div>
+            </div>
+            <div class="recentActivity">
+                <h2>RECENT ACTIVITY</h2>
+                <div class="memberActivity">
+
+                </div>
                 <!-- javascript inserting html -->
 
             </div>
         </div>
-        <div class="recentActivity">
-            <h2>RECENT ACTIVITY</h2>
-            <div class="memberActivity">
+        <div class="MessageSettingsFlex">
 
+
+            <div class="formBox">
+                <form name="messageForm" action="index.html" method="post" class="messageUser" onsubmit="return validateForm()">
+                    <label class="label" for="userSearch"><h2>MESSAGE USER</h2></label>
+                    <input id="userSearch" type="search" name="userSearch" placeholder="Search for User">
+                    <textarea indent="5px" class="textarea" name="textarea" rows="4" cols="20" placeholder="Message For User" value=""></textarea>
+                    <input class="sendBtn" type="submit" value="SEND" name="SEND">
+                </form>
             </div>
-            <!-- javascript inserting html -->
 
-        </div>
 
-        <form name="messageForm" action="index.html" method="post" class="messageUser" onsubmit="return validateForm()">
-            <label for="userSearch">MESSAGE USER</label>
-            <input id="userSearch" type="search" name="userSearch" placeholder="Search for User">
-            <textarea class="textarea" name="textarea" rows="10" cols="50" placeholder="" value=""></textarea>
-            <input type="submit" value="SEND" name="SEND">
-        </form>
+            <div class="settings" id="settings">
+                <span class="settingsHead"><h2>SETTINGS</h2></span>
 
-        <div class="settings" id="settings">
+                <div class="emailSwitch">
+                    <span>Send Email Notifications</span>
+                    <label class="switch">
+                <input id="emailNotification" type="checkbox">
 
-            <label class="switch">
-              <input id="emailNotification" type="checkbox">
               <div class="slider round">
-                <span class="on">ON</span>
-                <span class="off">OFF</span>
-              </div>
-            </label>
 
-            <label class="switch">
-              <input id="profileToPublic" type="checkbox">
+                  <span id="on" class="on">ON</span>
+                  <span id="off" class="off">OFF</span>
+              </div>
+
+
+              </label>
+                </div>
+
+                <br>
+                <div class="publicSwitch">
+                    <span>Set Profile to Public</span>
+                    <label class="switch">
+                <input id="profileToPublic" type="checkbox">
               <div class="slider round">
-                <span class="on">ON</span>
-                <span class="off">OFF</span>
+                  <span class="on">ON</span>
+                  <span class="off">OFF</span>
               </div>
-            </label>
+              </label>
+                </div>
 
-            <button type="button" name="Save" onclick="save()">SAVE</button>
-            <button type="button" name="Cancel" onclick="cancel()">CANCEL</button>
 
-            <select>
+
+                <br>
+                <div class="timeContainer">
+                    <select class="timezone">
+                  <option value=""  hidden>Select Timezone</option>
             	<option timezoneid="1" gmtadjustment="GMT-12:00" usedaylighttime="0" value="-12">(GMT-12:00) International Date Line West</option>
             	<option timezoneid="2" gmtadjustment="GMT-11:00" usedaylighttime="0" value="-11">(GMT-11:00) Midway Island, Samoa</option>
             	<option timezoneid="3" gmtadjustment="GMT-10:00" usedaylighttime="0" value="-10">(GMT-10:00) Hawaii</option>
@@ -264,9 +295,15 @@
             	<option timezoneid="81" gmtadjustment="GMT+12:00" usedaylighttime="0" value="12">(GMT+12:00) Fiji, Kamchatka, Marshall Is.</option>
             	<option timezoneid="82" gmtadjustment="GMT+13:00" usedaylighttime="0" value="13">(GMT+13:00) Nuku'alofa</option>
             </select>
+                </div>
+                <br>
+                <div class="saveCancelContainer">
+                    <button class="saveSettings" type="button" name="Save" onclick="save()">SAVE</button>
+                    <button class="cancelSettings" type="button" name="Cancel" onclick="cancel()">CANCEL</button>
+                </div>
 
+            </div>
         </div>
-
     </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
