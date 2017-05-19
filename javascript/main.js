@@ -222,13 +222,22 @@ function save() {
     localStorage.setItem("emailNotification", checkbox1.checked);
     var checkbox2 = document.getElementById("profileToPublic");
     localStorage.setItem("profileToPublic", checkbox2.checked);
+    var timezoneVal = $("#timezone").val();
+    localStorage.setItem("timezoneVal", timezoneVal);
 }
+
 
 //for loading
 var checked1 = JSON.parse(localStorage.getItem("emailNotification"));
 document.getElementById("emailNotification").checked = checked1;
 var checked2 = JSON.parse(localStorage.getItem("profileToPublic"));
 document.getElementById("profileToPublic").checked = checked2;
+var settimezone = localStorage.getItem("timezoneVal");
+$("#timezone").val(settimezone);
+
+//Storing Time Zone
+
+
 
 //for clearing checked selections
 function cancel() {
